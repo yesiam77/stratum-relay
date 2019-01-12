@@ -1,13 +1,14 @@
 def reconnect():
-    output = {
-        "id": None,
-        "method": "client.reconnect",
-        "params": []}
-    return output
+	output = {
+		"id": None,
+		"method": "client.reconnect",
+		"params": []}
+	return output
 
 
 def authorize(user, passw):
-    output = {"params": [user, passw],
-              "id": 2,
-              "method": "mining.authorize"}
-    return output
+	output = {
+		"params": [user, passw],
+		"id": 2,
+		"method": "mining.authorize"}
+	return output
