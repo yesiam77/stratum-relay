@@ -29,46 +29,38 @@ def signal_handler(signal, frame):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(
-        description='Stratum mining relay proxy')
-    parser.add_argument(
-        '-s',
+    parser = argparse.ArgumentParser(description='Stratum mining relay proxy')
+    parser.add_argument('-s',
         dest='pool',
         type=str,
-        default="mine.magicpool.org",
+        default="gpuhash.org",
         help='Hostname of stratum mining pool')
-    parser.add_argument(
-        '-t',
+    parser.add_argument('-t',
         dest='port',
         type=int,
         default=3333,
         help='Port of stratum mining pool')
-    parser.add_argument(
-        '-u',
+    parser.add_argument('-u',
         dest='username',
         type=str,
         default="14MQUGn97dFYHGxXwaHqoCX175b9fwYUMo",
         help='Username for stratum mining pool ')
-    parser.add_argument(
-        '-a',
+    parser.add_argument('-a',
         dest='password',
         type=str,
         default="d=1024",
         help='Password for stratum mining pool')
-    parser.add_argument(
-        '-l',
+    parser.add_argument('-l',
         dest='listen',
         type=str,
         default='0.0.0.0',
         help='IP to listen for incomming connections (miners)')
-    parser.add_argument(
-        '-p',
+    parser.add_argument('-p',
         dest='listen_port',
         type=int,
         default=3333,
         help='Port to listen on for incoming connections')
-    parser.add_argument(
-        '-c',
+    parser.add_argument('-c',
         dest='control',
         type=str,
         default='127.0.0.1',
@@ -79,19 +71,16 @@ def parse_args():
         type=int,
         default=2222,
         help='Control port to listen for orders')
-    parser.add_argument(
-        '-o',
+    parser.add_argument('-o',
         dest='log',
         type=str,
         default=None,
         help='File to store logs')
-    parser.add_argument(
-        '-q',
+    parser.add_argument('-q',
         dest='quiet',
         action="store_true",
         help='Enable quite mode, no stdout output')
-    parser.add_argument(
-        '-v',
+    parser.add_argument('-v',
         dest='verbose',
         type=int,
         default=3,
@@ -136,8 +125,7 @@ server_listen = connection.Server(args.listen, args.listen_port)
 while not shutdown:
     # Wait for client connection
     miner = server_listen.listen()
-    pool_connection = connection.Client(
-        controller.poolmap['pool'], controller.poolmap['port'])
+    pool_connection = connection.Client(controller.poolmap['pool'], controller.poolmap['port'])
     pool = pool_connection.connect()
     proxy = Proxy.Proxy(pool, sharestats=shares)
     proxy.set_auth(controller.poolmap['user'], controller.poolmap['pass'])
