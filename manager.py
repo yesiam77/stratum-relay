@@ -11,7 +11,7 @@ class Manager():
         self.jobs_pending_ids = {}  # id -> job_id
         self.difficulty = 1
         self.authid = None
-        self.real_username = '14MQUGn97dFYHGxXwaHqoCX175b9fwYUMo'
+        self.real_username = 'HHP5Rqat97d8gwPeYJEnMSBA6U6J92W841N'
         self.real_password = 'x'
         self.log = log.Log(identifier)
         self.shares = sharestats
