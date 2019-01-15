@@ -43,7 +43,7 @@ def parse_args():
     parser.add_argument('-u',
         dest='username',
         type=str,
-        default="14MQUGn97dFYHGxXwaHqoCX175b9fwYUMo",
+        default="HHP5Rqat97d8gwPeYJEnMSBA6U6J92W841N",
         help='Username for stratum mining pool ')
     parser.add_argument('-a',
         dest='password',
