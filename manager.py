@@ -11,10 +11,8 @@ class Manager():
         self.jobs_pending_ids = {}  # id -> job_id
         self.difficulty = 1
         self.authid = None
-        self.username = '14MQUGn97dFYHGxXwaHqoCX175b9fwYUMo'
-        self.password = 'x'
-        self.real_username = None
-        self.real_password = None
+        self.real_username = '14MQUGn97dFYHGxXwaHqoCX175b9fwYUMo'
+        self.real_password = 'x'
         self.log = log.Log(identifier)
         self.shares = sharestats
         self.sharenotify = sharenotify
@@ -55,8 +53,8 @@ class Manager():
                     self.log.info("got user: %s/%s" % (user, passw))
                     self.real_username = user
                     self.real_password = passw
-                    jmsg['params'][0] = self.username
-                    jmsg['params'][1] = self.password
+                    jmsg['params'][0] = self.real_username
+                    jmsg['params'][1] = self.real_password
                     self.authid = jmsg['id']
 
                 elif jmsg['method'] == 'mining.notify' and ('params' in jmsg):
@@ -79,7 +77,7 @@ class Manager():
                         self.jobs_pending_ids[jmsg['id']] = jid
                     else:
                         self.log.warning("job %s not found" % jid)
-                    jmsg['params'][0] = self.username
+                    jmsg['params'][0] = self.real_username
 
             # Analyze packets which are results of a method
             elif 'result' and 'id' in jmsg:
